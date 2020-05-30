@@ -1,6 +1,7 @@
-
+################################
 from classes.Character import Character
-
+################################
+################################
 class Ennemy(Character):
     def __init__(self, position_x=0, position_y=0, icon='', change_position_x=0, change_position_y=0):
         super().__init__(position_x=position_x, position_y=position_y, icon=icon, change_position_x=change_position_x, change_position_y=change_position_y)

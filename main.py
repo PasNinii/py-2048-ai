@@ -12,7 +12,7 @@ from utils.init import init_screen, init_characters
 pygame.init()
 # * Create the screen, with resolution param
 screen = pygame.display.set_mode(Settings.SIZE)
-player, ennemies = init_characters()
+player, ennemies, bullet = init_characters()
 background = "background.png"
 while (True):
     init_screen(screen, background)
@@ -21,8 +21,12 @@ while (True):
         if (event.type == pygame.KEYDOWN):
             if (event.key == pygame.K_LEFT):
                 player.change_rate(-5)
-            elif (event.key == pygame.K_RIGHT):
+            if (event.key == pygame.K_RIGHT):
                 player.change_rate(5)
+            if (event.key == pygame.K_SPACE):
+                if (bullet.bullet_state == True):
+                    bullet_x = player.position_x
+                    bullet.move(screen, bullet_x)
         if (event.type == pygame.KEYUP):
             if (event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT):
                 player.change_rate()
@@ -30,6 +34,9 @@ while (True):
         if (event.type == pygame.QUIT):
             pygame.quit()
             sys.exit(2)
+    if (bullet.bullet_state == False):
+        bullet.move(screen, bullet_x)
+    bullet.check_boundaries()
     ennemies.move(screen)
     player.move(screen)
     # ! update every iteration

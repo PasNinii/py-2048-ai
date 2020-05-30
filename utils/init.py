@@ -6,6 +6,7 @@ import random
 from classes.Player import Player
 from classes.Ennemy import Ennemy
 from classes.Ennemies import Ennemies
+from classes.Bullet import Bullet
 from resources.settings.settings import Settings
 ################################
 ################################
@@ -38,4 +39,5 @@ def init_characters():
                     change_position_y=0.01)
     ]
     ennemies = Ennemies(list_ennemies)
-    return player, ennemies
+    bullet = Bullet(370, 480, Settings.PATH + "bullet.png", 0, 10)
+    return player, ennemies, bullet
