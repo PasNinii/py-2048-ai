@@ -5,6 +5,7 @@ import random
 # * Utils Modules
 from classes.Player import Player
 from classes.Ennemy import Ennemy
+from classes.Ennemies import Ennemies
 from resources.settings.settings import Settings
 ################################
 ################################
@@ -22,18 +23,19 @@ def init_characters():
     player = Player(position_x=370,
                     position_y=480,
                     icon=Settings.PATH + "player_icon.png")
-    ennemies = [
+    list_ennemies = [
         Ennemy(icon=Settings.PATH + "ennemy_cake.png",
-                    change_position_x=0.4,
+                    change_position_x=2,
                     change_position_y=0.01),
         Ennemy(icon=Settings.PATH + "ennemy_dessert.png",
-                    change_position_x=0.6,
+                    change_position_x=4,
                     change_position_y=0.01),
         Ennemy(icon=Settings.PATH + "ennemy_hotdog.png",
-                    change_position_x=0.8,
+                    change_position_x=6,
                     change_position_y=0.01),
         Ennemy(icon=Settings.PATH + "ennemy_popcorn.png",
-                    change_position_x=1.0,
+                    change_position_x=8,
                     change_position_y=0.01)
     ]
+    ennemies = Ennemies(list_ennemies)
     return player, ennemies

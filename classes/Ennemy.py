@@ -13,5 +13,7 @@ class Ennemy(Character):
     def check_boundaries(self):
         if (self.position_x > 736.0):
             self.change_position_x = -self.change_position_x
+            self.change_position_y *= 2
         elif (self.position_x < 0.0):
             self.change_position_x = -self.change_position_x
+            self.change_position_y *= 2
