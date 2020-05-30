@@ -1,0 +1,7 @@
+{
+  "python.pythonPath": "C:\\Users\\nicra\\Anaconda3\\envs\\aigame\\python.exe",
+  "files.exclude": {
+    "**/__init__": true,
+    "**/__init__.*": true
+  }
+}
