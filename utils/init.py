@@ -3,28 +3,37 @@
 import pygame
 import random
 # * Utils Modules
-from resources.settings import Settings
+from classes.Player import Player
+from classes.Ennemy import Ennemy
+from resources.settings.settings import Settings
 ################################
 ################################
-def init(screen):
+def init_screen(screen, background):
     # * Title and Icon
     pygame.display.set_caption(Settings.NAME)
     icon = pygame.image.load(Settings.PATH + "game_logo.png")
-    background = pygame.image.load(Settings.PATH + "background.png")
+    background = pygame.image.load(Settings.PATH + background)
     background = pygame.transform.scale(background, Settings.SIZE)
     pygame.display.set_icon(icon)
-    # * Player
-    player_icon = pygame.image.load(Settings.PATH + "player_icon.png")
-    playerX = 370.0
-    playerY = 480.0
-    playerX_change = 0
-    playerX_change = 0
-    # * Ennemy
-    ennemy_icon = pygame.image.load(Settings.PATH + "ennemy_icon.png")
-    ennemyX = random.randint(0, 800)
-    ennemyY = random.randint(50, 150)
-    ennemyX_change = 0.5
-    ennemyY_change = 0
-    screen.fill((192, 192, 192))
+    screen.fill(Settings.COLO)
     screen.blit(background, (0,0))
-    
+
+def init_characters():
+    player = Player(position_x=370,
+                    position_y=480,
+                    icon=Settings.PATH + "player_icon.png")
+    ennemies = [
+        Ennemy(icon=Settings.PATH + "ennemy_cake.png",
+                    change_position_x=0.4,
+                    change_position_y=0.01),
+        Ennemy(icon=Settings.PATH + "ennemy_dessert.png",
+                    change_position_x=0.6,
+                    change_position_y=0.01),
+        Ennemy(icon=Settings.PATH + "ennemy_hotdog.png",
+                    change_position_x=0.8,
+                    change_position_y=0.01),
+        Ennemy(icon=Settings.PATH + "ennemy_popcorn.png",
+                    change_position_x=1.0,
+                    change_position_y=0.01)
+    ]
+    return player, ennemies
